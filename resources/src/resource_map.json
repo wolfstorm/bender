@@ -2,6 +2,11 @@
 {"friendlyVersion": "VERSION",
  "versionDefName": "VERSION",
  "media": [
+ 	   {
+	    "type":"png",
+	    "defName":"IMAGE_MENU_ICON",
+	    "file":"images/menu_icon_watch.png"
+	   },
 		{
 		    "type":"png-trans",
 		    "defName":"BACKGROUND",

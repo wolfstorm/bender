@@ -7,7 +7,7 @@
 PBL_APP_INFO(MY_UUID,
              "Kiss my Shiny Metal", "JRD",
              1, 1, /* App version */
-             DEFAULT_MENU_ICON,
+             RESOURCE_ID_IMAGE_MENU_ICON,
              APP_INFO_WATCH_FACE);
 
 Window window;
