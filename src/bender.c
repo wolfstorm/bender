@@ -68,14 +68,14 @@ void handle_init(AppContextRef ctx) {
 
 
   bmp_init_container(RESOURCE_ID_PLANETEXPRESS, &image_planetexpress);
-  image_planetexpress.layer.layer.frame.origin.y = 24;
+  image_planetexpress.layer.layer.frame.origin.y = 18;
   //image_planetexpress.layer.layer.frame.origin.x = -56;
   layer_add_child(&window.layer, &image_planetexpress.layer.layer);
 
 
   bmp_init_container(RESOURCE_ID_EYES, &image_eyes);
   image_eyes.layer.layer.frame.origin.y = 45;
-  image_eyes.layer.layer.frame.origin.x = 55;
+  image_eyes.layer.layer.frame.origin.x = 56;
   layer_add_child(&window.layer, &image_eyes.layer.layer);
 
 
@@ -194,10 +194,10 @@ void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *event)
   currentSecond = (double)event->tick_time->tm_sec;
   currentPosition = -56 + ((144 +56) * (currentSecond/60));
 
-  eyeposition = 55 + (5 * (currentSecond/60));
+  eyeposition = 56.0 + (5.0 * (currentSecond/60));
 
   image_eyes.layer.layer.frame.origin.x = (int)eyeposition;
-  layer_mark_dirty(&image_eyes.layer.layer);
+
 
   image_planetexpress.layer.layer.frame.origin.x = (int)currentPosition;
 
@@ -229,7 +229,7 @@ void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *event)
   text_layer_set_text(&time_display_textlayer_d2, time_str_buffer_d2);
 
   layer_mark_dirty(&image_planetexpress.layer.layer);
-
+  layer_mark_dirty(&image_eyes.layer.layer);
 
   if ((int)currentSecond == 0){
 	  layer_mark_dirty(&time_display_textlayer_h1.layer);
