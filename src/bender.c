@@ -13,6 +13,7 @@ PBL_APP_INFO(MY_UUID,
 Window window;
 RotBmpPairContainer image_background;
 BmpContainer image_planetexpress;
+BmpContainer image_eyes;
 
 TextLayer time_display_textlayer;
 TextLayer time_display_textlayer_h1;
@@ -54,6 +55,7 @@ char time_str_buffer_M2[1];
 
 double currentSecond;
 double currentPosition;
+double eyeposition;
 
 void handle_init(AppContextRef ctx) {
   (void)ctx;
@@ -69,6 +71,13 @@ void handle_init(AppContextRef ctx) {
   image_planetexpress.layer.layer.frame.origin.y = 24;
   //image_planetexpress.layer.layer.frame.origin.x = -56;
   layer_add_child(&window.layer, &image_planetexpress.layer.layer);
+
+
+  bmp_init_container(RESOURCE_ID_EYES, &image_eyes);
+  image_eyes.layer.layer.frame.origin.y = 45;
+  image_eyes.layer.layer.frame.origin.x = 55;
+  layer_add_child(&window.layer, &image_eyes.layer.layer);
+
 
   rotbmp_pair_init_container(RESOURCE_ID_BACKGROUND_WHITE,RESOURCE_ID_BACKGROUND_BLACK, &image_background);
   image_background.layer.layer.frame.origin.y = -26;
@@ -184,6 +193,11 @@ void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *event)
 {
   currentSecond = (double)event->tick_time->tm_sec;
   currentPosition = -56 + ((144 +56) * (currentSecond/60));
+
+  eyeposition = 55 + (5 * (currentSecond/60));
+
+  image_eyes.layer.layer.frame.origin.x = (int)eyeposition;
+  layer_mark_dirty(&image_eyes.layer.layer);
 
   image_planetexpress.layer.layer.frame.origin.x = (int)currentPosition;
 
