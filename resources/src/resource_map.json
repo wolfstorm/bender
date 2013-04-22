@@ -1,0 +1,16 @@
+
+{"friendlyVersion": "VERSION",
+ "versionDefName": "VERSION",
+ "media": [
+		{
+		    "type":"png-trans",
+		    "defName":"BACKGROUND",
+		    "file":"images/bender_tran.png"
+	   	},
+	   	{
+	   		"type":"png",
+	   		"defName":"PLANETEXPRESS",
+	   		"file":"images/PlanetExpress.png"
+	   	}
+	  ]
+}
